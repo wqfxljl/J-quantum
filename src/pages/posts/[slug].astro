@@ -1,0 +1,279 @@
+
+---
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const categoryNames = {
+  reading: '阅读笔记',
+  research: '文献思考',
+  travel: '旅游准备',
+  reflections: '随笔与思考',
+};
+
+const statusNames = {
+  exploring: '探索中',
+  verified: '已验证',
+  rejected: '已否定',
+};
+
+const category = categoryNames[post.data.category];
+const status = post.data.status
+  ? statusNames[post.data.status]
+  : '';
+
+const date = post.data.date
+  ? post.data.date.toISOString().slice(0, 10)
+  : '';
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{post.data.title} | J-quantum</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a href={base} class="brand">J-quantum</a>
+        <a href={base} class="home">← 返回首页</a>
+      </div>
+    </header>
+
+    <div class="layout">
+      <main>
+        <div class="metadata">
+          <span>{category}</span>
+          {date && <span>{date}</span>}
+          {status && <span class="status">{status}</span>}
+        </div>
+
+        <h1>{post.data.title}</h1>
+
+        <div class="separator"></div>
+
+        <article class="article">
+          <Content />
+        </article>
+
+        <footer>
+          <a href={base}>← 返回文章首页</a>
+        </footer>
+      </main>
+
+      <aside class="toc">
+        <h2>文章目录</h2>
+        {
+          headings.filter(h => h.depth >= 2).map(h => (
+            <a
+              href={`#${h.slug}`}
+              class={h.depth > 2 ? 'nested' : ''}
+            >
+              {h.text}
+            </a>
+          ))
+        }
+      </aside>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    color: #293647;
+    background: #fafbfc;
+    font-family: -apple-system, BlinkMacSystemFont,
+      "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.85;
+  }
+
+  .header {
+    background: white;
+    border-bottom: 1px solid #e6ebf0;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .brand {
+    color: #293647;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  .home {
+    color: #718096;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .layout {
+    max-width: 1100px;
+    margin: 55px auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 65px;
+  }
+
+  main {
+    min-width: 0;
+    background: white;
+    padding: 40px 48px;
+    border: 1px solid #e9edf2;
+    border-radius: 12px;
+  }
+
+  .metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 13px;
+    color: #8190a1;
+  }
+
+  .status {
+    color: #4679a9;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.4;
+    margin: 20px 0;
+  }
+
+  .separator {
+    border-bottom: 1px solid #e9edf2;
+    margin: 26px 0;
+  }
+
+  .article {
+    font-size: 16px;
+    line-height: 2;
+    overflow-wrap: anywhere;
+  }
+
+  .article :global(h2) {
+    font-size: 23px;
+    margin-top: 38px;
+    scroll-margin-top: 24px;
+  }
+
+  .article :global(h3) {
+    font-size: 19px;
+    margin-top: 28px;
+    scroll-margin-top: 24px;
+  }
+
+  .article :global(p) {
+    margin: 18px 0;
+  }
+
+  .article :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .article :global(pre) {
+    overflow-x: auto;
+    padding: 16px;
+    border-radius: 8px;
+    background: #f3f5f7;
+  }
+
+  .article :global(a) {
+    color: #3274af;
+  }
+
+  .toc {
+    position: sticky;
+    top: 30px;
+    align-self: start;
+  }
+
+  .toc h2 {
+    font-size: 14px;
+    color: #8995a3;
+  }
+
+  .toc a {
+    display: block;
+    padding: 7px 0;
+    color: #536579;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .toc .nested {
+    padding-left: 14px;
+  }
+
+  .toc a:hover {
+    color: #3274af;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e9edf2;
+  }
+
+  footer a {
+    color: #718096;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  @media (max-width: 800px) {
+    .layout {
+      display: block;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    main {
+      padding: 24px 20px;
+    }
+
+    h1 {
+      font-size: 26px;
+    }
+
+    .toc {
+      position: static;
+      margin-top: 35px;
+    }
+  }
+</style>
