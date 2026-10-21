@@ -1,0 +1,298 @@
+
+---
+const sections = [
+  {
+    id: "reading",
+    icon: "📖",
+    title: "阅读笔记",
+    english: "Reading Notes",
+    description: "记录书籍阅读中的理解、疑问与感悟。"
+  },
+  {
+    id: "research",
+    icon: "🔬",
+    title: "文献思考",
+    english: "Research Notes",
+    description: "整理学术文献与研究想法，包括已验证、待验证和已否定的探索。"
+  },
+  {
+    id: "travel",
+    icon: "🌍",
+    title: "旅游准备",
+    english: "Travel Planning",
+    description: "收集目的地资料、历史文化与旅行计划。"
+  },
+  {
+    id: "thoughts",
+    icon: "✍️",
+    title: "随笔与思考",
+    english: "Reflections",
+    description: "记录生活中的观察、感悟与自由思考。"
+  }
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="个人阅读、文献研究与生活记录" />
+    <title>J-quantum | 阅读、思考与生活</title>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="top-inner">
+        <a href="#top" class="logo">J-quantum</a>
+        <span class="subtitle">阅读 · 思考 · 生活</span>
+      </div>
+    </header>
+
+    <div class="layout" id="top">
+      <aside class="sidebar">
+        <p class="nav-label">导航目录</p>
+        <nav aria-label="文章分类">
+          {
+            sections.map((item) => (
+              <a href={`#${item.id}`}>
+                <span>{item.icon}</span>
+                {item.title}
+              </a>
+            ))
+          }
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="welcome">
+          <p class="eyebrow">PERSONAL KNOWLEDGE SPACE</p>
+          <h1>阅读、思考与生活</h1>
+          <p class="intro">
+            记录阅读中的收获、研究中的探索，
+            以及生活中值得留存的思考。
+          </p>
+        </section>
+
+        <div class="sections">
+          {
+            sections.map((item) => (
+              <section id={item.id} class="topic">
+                <div class="topic-heading">
+                  <span class="emoji">{item.icon}</span>
+                  <div>
+                    <h2>{item.title}</h2>
+                    <span class="english">{item.english}</span>
+                  </div>
+                </div>
+                <p>{item.description}</p>
+                <div class="placeholder">
+                  文章目录 · 持续更新中
+                </div>
+              </section>
+            ))
+          }
+        </div>
+
+        <footer>
+          保持好奇，享受思考。
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #fafbfc;
+    color: #273444;
+    font-family: -apple-system, BlinkMacSystemFont,
+      "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+  }
+
+  .topbar {
+    background: white;
+    border-bottom: 1px solid #e9edf2;
+  }
+
+  .top-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #293b50;
+    text-decoration: none;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: #8995a3;
+  }
+
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 28px;
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 65px;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 30px;
+    align-self: start;
+  }
+
+  .nav-label {
+    color: #98a3b1;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #536579;
+    font-size: 14px;
+    padding: 9px 12px;
+    border-radius: 7px;
+  }
+
+  nav a:hover {
+    background: #eaf1f8;
+    color: #2563a6;
+  }
+
+  .content {
+    min-width: 0;
+  }
+
+  .welcome {
+    margin-bottom: 46px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #6688aa;
+  }
+
+  h1 {
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin: 12px 0;
+  }
+
+  .intro {
+    color: #718096;
+    font-size: 15px;
+  }
+
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .topic {
+    background: white;
+    border: 1px solid #e9edf2;
+    border-radius: 12px;
+    padding: 25px 30px;
+    scroll-margin-top: 24px;
+  }
+
+  .topic-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .emoji {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .english {
+    font-size: 12px;
+    color: #9aa5b1;
+  }
+
+  .topic p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 17px 0;
+  }
+
+  .placeholder {
+    border-top: 1px solid #f0f2f5;
+    padding-top: 13px;
+    font-size: 13px;
+    color: #a0aab5;
+  }
+
+  footer {
+    margin-top: 55px;
+    color: #a0aab5;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .layout {
+      display: block;
+      padding: 25px 20px;
+    }
+
+    .sidebar {
+      position: static;
+      margin-bottom: 35px;
+    }
+
+    nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      background: white;
+      border: 1px solid #e9edf2;
+    }
+
+    h1 {
+      font-size: 27px;
+    }
+
+    .topic {
+      padding: 20px;
+    }
+  }
+</style>
