@@ -4,8 +4,6 @@ category: research
 date: 2026-10-21
 status: exploring
 ---
-
-
 量子态可以表示为：
 
 $$
@@ -16,4 +14,3 @@ $$
 
 其中 $|\alpha|^2+|\beta|^2=1$。
 
-  
