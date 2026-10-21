@@ -1,0 +1,59 @@
+
+media:
+  input: public/images
+  output: /J-quantum/images
+
+content:
+  - name: posts
+    label: 我的文章
+    type: collection
+    path: src/content/posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+
+    view:
+      fields: [title, category, date, status]
+      primary: title
+
+    fields:
+      - name: title
+        label: 文章标题
+        type: string
+        required: true
+
+      - name: category
+        label: 文章分类
+        type: select
+        required: true
+        options:
+          values:
+            - name: reading
+              label: 阅读笔记
+            - name: research
+              label: 文献思考
+            - name: travel
+              label: 旅游准备
+            - name: reflections
+              label: 随笔与思考
+
+      - name: date
+        label: 日期
+        type: date
+
+      - name: status
+        label: 研究状态
+        type: select
+        options:
+          values:
+            - name: exploring
+              label: 探索中
+            - name: verified
+              label: 已验证
+            - name: rejected
+              label: 已否定
+
+      - name: body
+        label: 正文
+        type: rich-text
+        options:
+          format: markdown
