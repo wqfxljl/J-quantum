@@ -22,36 +22,39 @@ status: exploring
 
 ### 1.2 从物理性质到资源集合
 
-考虑有限维 Hilbert 空间 (\mathcal H)，所有合法量子态构成集合
+考虑有限维 Hilbert 空间 $\mathcal H$，所有合法量子态构成集合
 
-{\rho:\rho\succeq0,\ \operatorname{Tr}\rho=1}.  
-]
+$$
+\mathcal D(\mathcal H)
+=
+\{\rho:\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
+$$
 
 我们可以根据关心的性质，对量子态施加不同的限制，从而定义相应的态集合
 
-[  
-\mathcal C\subseteq\mathcal D(\mathcal H).  
-]
+$$
+\mathcal C\subseteq\mathcal D(\mathcal H).
+$$
 
 例如，可分态、非 magic 态、Bell 局域态等，分别由不同的物理条件定义。
 
 于是，资源刻画的基本问题可以表示为
 
-[  
-\boxed{  
-\rho\in\mathcal C  
-\quad\text{还是}\quad  
-\rho\notin\mathcal C?  
-}  
-]
+$$
+\boxed{
+\rho\in\mathcal C
+\quad\text{还是}\quad
+\rho\notin\mathcal C?
+}
+$$
 
-这里，(\mathcal C) 往往代表满足某种限制的资源集合。判断 (\rho\notin\mathcal C)，意味着可以排除相应的受限资源描述，从而认证某种非经典性质。
+这里，$\mathcal C$ 往往代表满足某种限制的资源集合。判断 $\rho\notin\mathcal C$，意味着可以排除相应的受限资源描述，从而认证某种非经典性质。
 
 需要注意，资源性质有时依赖额外的物理假设。例如，一个态是否能够产生 Bell 非局域关联，与允许的局部测量类别有关。因此，定义资源集合时必须同时明确相关的操作和测量限制。
 
 ### 1.3 从实验数据认证未知量子态
 
-如果已知完整的量子态 (\rho)，原则上可以直接分析其数学性质。但在实际实验中，通常需要通过测量获取关于量子态的信息。
+如果已知完整的量子态 $\rho$，原则上可以直接分析其数学性质。但在实际实验中，通常需要通过测量获取关于量子态的信息。
 
 量子态层析（Quantum State Tomography）试图使用信息完备的测量数据重建整个密度矩阵。
 
@@ -61,38 +64,38 @@ status: exploring
 
 假设实验测量了一组可观测量
 
-[  
-O_1,\ldots,O_m,  
-]
+$$
+O_1,\ldots,O_m,
+$$
 
 得到期望值
 
-[  
-d_i=\langle O_i\rangle_\rho  
-=\operatorname{Tr}(\rho O_i).  
-]
+$$
+d_i=\langle O_i\rangle_\rho
+=\operatorname{Tr}(\rho O_i).
+$$
 
 实验数据可以记为
 
-[  
-\mathbf d=(d_1,\ldots,d_m).  
-]
+$$
+\mathbf d=(d_1,\ldots,d_m).
+$$
 
-我们希望利用这些数据判断未知态是否属于受限集合 (\mathcal C)。
+我们希望利用这些数据判断未知态是否属于受限集合 $\mathcal C$。
 
-一种方式是构造仅依赖观测数据的函数 (W(\mathbf d))，使所有满足限制的态都满足
+一种方式是构造仅依赖观测数据的函数 $W(\mathbf d)$，使所有满足限制的态都满足
 
-[  
-W(\mathbf d)\leq\beta_{\mathcal C}.  
-]
+$$
+W(\mathbf d)\leq\beta_{\mathcal C}.
+$$
 
 于是，一旦观测到
 
-[  
-\boxed{W(\mathbf d)>\beta_{\mathcal C},}  
-]
+$$
+\boxed{W(\mathbf d)>\beta_{\mathcal C},}
+$$
 
-就可以认证未知量子态不属于集合 (\mathcal C)。
+就可以认证未知量子态不属于集合 $\mathcal C$。
 
 这就是 Witness 或资源不等式的基本思想。
 
@@ -120,51 +123,51 @@ W(\mathbf d)\leq\beta_{\mathcal C}.
 
 资源集合的几何结构，会直接影响资源认证的方法。
 
-集合 (\mathcal C) 是凸的，是指对于任意 (\rho_1,\rho_2\in\mathcal C) 和 (p\in[0,1])，都有
+集合 $\mathcal C$ 是凸的，是指对于任意 $\rho_1,\rho_2\in\mathcal C$ 和 $p\in[0,1]$，都有
 
-[  
-p\rho_1+(1-p)\rho_2\in\mathcal C.  
-]
+$$
+p\rho_1+(1-p)\rho_2\in\mathcal C.
+$$
 
 从物理上看，这意味着随机混合两个满足资源限制的态，得到的态仍然满足这一限制。
 
 如果该条件不成立，则集合是非凸的。
 
-量子态全集 (\mathcal D(\mathcal H)) 本身是凸的，但不同物理限制定义的资源集合不一定具有相同的结构。
+量子态全集 $\mathcal D(\mathcal H)$ 本身是凸的，但不同物理限制定义的资源集合不一定具有相同的结构。
 
 这里需要特别注意：**态集合、测量产生的关联集合，以及具有额外源独立性约束的网络关联集合，是不同的数学对象，其凸性需要分别讨论。**
 
 ### 2.2 线性 Witness 与超平面分离
 
-对于有限维空间中的闭凸资源集合 (\mathcal C)，如果某个态 (\rho\notin\mathcal C)，根据凸集分离定理，可以找到 Hermitian 算符 (W)，使得
+对于有限维空间中的闭凸资源集合 $\mathcal C$，如果某个态 $\rho\notin\mathcal C$，根据凸集分离定理，可以找到 Hermitian 算符 $W$，使得
 
-[  
-\operatorname{Tr}(W\sigma)\geq0,  
-\qquad \forall\sigma\in\mathcal C,  
-]
+$$
+\operatorname{Tr}(W\sigma)\geq0,
+\qquad \forall\sigma\in\mathcal C,
+$$
 
 而
 
-[  
-\boxed{\operatorname{Tr}(W\rho)<0.}  
-]
+$$
+\boxed{\operatorname{Tr}(W\rho)<0.}
+$$
 
-这个算符 (W) 就构成了一个线性 Witness。
+这个算符 $W$ 就构成了一个线性 Witness。
 
 其几何意义是：通过一个超平面，将目标态与受限资源集合分离。
 
 如果 Witness 能够展开为实验可测的可观测量
 
-[  
-W=\sum_i c_iO_i,  
-]
+$$
+W=\sum_i c_iO_i,
+$$
 
 那么
 
-[  
-\operatorname{Tr}(W\rho)  
-=\sum_i c_i\langle O_i\rangle_\rho.  
-]
+$$
+\operatorname{Tr}(W\rho)
+=\sum_i c_i\langle O_i\rangle_\rho.
+$$
 
 因此，我们只需要测量其中涉及的可观测量，就可以完成认证，而不必重建整个量子态。
 
@@ -174,10 +177,13 @@ W=\sum_i c_iO_i,
 
 线性 Witness 并非适用于所有资源刻画问题。
 
-如果受限集合 (\mathcal C) 是非凸的，那么对于任意线性函数 (L)，都有
+如果受限集合 $\mathcal C$ 是非凸的，那么对于任意线性函数 $L$，都有
 
-\sup_{\rho\in\operatorname{conv}(\mathcal C)}L(\rho).  
-]
+$$
+\sup_{\rho\in\mathcal C}L(\rho)
+=
+\sup_{\rho\in\operatorname{conv}(\mathcal C)}L(\rho).
+$$
 
 这意味着，**单纯依靠线性上界，无法区分非凸集合与其凸包内部的资源。**
 
@@ -185,10 +191,10 @@ W=\sum_i c_iO_i,
 
 例如，在 bilocal 网络中，两个经典源的统计独立性要求
 
-[  
-p(\lambda_1,\lambda_2)  
-=p(\lambda_1)p(\lambda_2).  
-]
+$$
+p(\lambda_1,\lambda_2)
+=p(\lambda_1)p(\lambda_2).
+$$
 
 这一条件使经典 bilocal 关联集合通常是非凸的，因此可以通过非线性网络不等式揭示普通线性 Bell 不等式无法检测到的限制。
 
@@ -196,29 +202,35 @@ p(\lambda_1,\lambda_2)
 
 ### 2.4 从有限数据到最优 Witness
 
-假设实验只提供数据 (\mathbf d)。
+假设实验只提供数据 $\mathbf d$。
 
 一种系统的认证方式是先考虑与数据相容的受限资源：
 
-\left{  
-\sigma\in\mathcal C:  
-\operatorname{Tr}(\sigma O_i)=d_i  
-\right}.  
-]
+$$
+\mathcal C(\mathbf d)
+=
+\left\{
+\sigma\in\mathcal C:
+\operatorname{Tr}(\sigma O_i)=d_i
+\right\}.
+$$
 
 如果
 
-[  
-\boxed{\mathcal C(\mathbf d)=\varnothing,}  
-]
+$$
+\boxed{\mathcal C(\mathbf d)=\varnothing,}
+$$
 
 说明不存在任何属于目标集合的态能够解释观测数据，因此可以排除相应的资源限制。
 
 对于线性 Witness，可以通过优化计算受限界
 
-\max_{\sigma\in\mathcal C}  
-\operatorname{Tr}(W\sigma).  
-]
+$$
+\beta_{\mathcal C}
+=
+\max_{\sigma\in\mathcal C}
+\operatorname{Tr}(W\sigma).
+$$
 
 这使 Witness 构造与优化理论联系起来。
 
@@ -250,14 +262,18 @@ p(\lambda_1,\lambda_2)
 
 #### （1）数学定义
 
-考虑双体量子态 (\rho_{AB})。
+考虑双体量子态 $\rho_{AB}$。
 
-如果存在概率分布 (p_\lambda) 和局部量子态 (\rho_A^\lambda,\rho_B^\lambda)，使得
+如果存在概率分布 $p_\lambda$ 和局部量子态 $\rho_A^\lambda,\rho_B^\lambda$，使得
 
-\sum_\lambda p_\lambda  
-\rho_A^\lambda\otimes\rho_B^\lambda,  
-}  
-]
+$$
+\boxed{
+\rho_{AB}
+=
+\sum_\lambda p_\lambda
+\rho_A^\lambda\otimes\rho_B^\lambda,
+}
+$$
 
 则称该态为可分态（Separable State）。
 
@@ -267,53 +283,56 @@ p(\lambda_1,\lambda_2)
 
 可分态集合为
 
-\operatorname{conv}  
-{\rho_A\otimes\rho_B}.  
-]
+$$
+\mathcal S_{\mathrm{sep}}
+=
+\operatorname{conv}
+\{\rho_A\otimes\rho_B\}.
+$$
 
-由于可分态的任意凸组合仍然可分，因此 (\mathcal S_{\mathrm{sep}}) 是凸集。
+由于可分态的任意凸组合仍然可分，因此 $\mathcal S_{\mathrm{sep}}$ 是凸集。
 
 在有限维系统中，它还是闭集，因此可以使用超平面分离理论构造纠缠 Witness。
 
 #### （3）典型 Witness
 
-Entanglement Witness 是一个 Hermitian 算符 (W)，满足
+Entanglement Witness 是一个 Hermitian 算符 $W$，满足
 
-[  
-\operatorname{Tr}(W\sigma)\geq0,  
-\qquad\forall\sigma\in\mathcal S_{\mathrm{sep}},  
-]
+$$
+\operatorname{Tr}(W\sigma)\geq0,
+\qquad\forall\sigma\in\mathcal S_{\mathrm{sep}},
+$$
 
-但对于某些纠缠态 (\rho)，
+但对于某些纠缠态 $\rho$，
 
-[  
-\operatorname{Tr}(W\rho)<0.  
-]
+$$
+\operatorname{Tr}(W\rho)<0.
+$$
 
 例如，对于两个 qubit，可以构造
 
-[  
-W=\frac12 I_4-  
-|\Phi^+\rangle\langle\Phi^+|.  
-]
+$$
+W=\frac12 I_4-
+|\Phi^+\rangle\langle\Phi^+|.
+$$
 
-因为任意可分态与 (\Phi^+) 的重叠不超过 (1/2)，所以
+因为任意可分态与 $\Phi^+$ 的重叠不超过 $1/2$，所以
 
-[  
-\operatorname{Tr}(W\rho)<0  
-]
+$$
+\operatorname{Tr}(W\rho)<0
+$$
 
-能够认证 (\rho) 是纠缠态。
+能够认证 $\rho$ 是纠缠态。
 
 #### （4）其他判据
 
 PPT 判据要求可分态在局部转置后仍然半正定：
 
-[  
-\rho_{AB}^{T_B}\succeq0.  
-]
+$$
+\rho_{AB}^{T_B}\succeq0.
+$$
 
-对于 (2\times2) 和 (2\times3) 系统，PPT 是可分性的充要条件；在更高维系统中，存在 PPT 纠缠态。
+对于 $2\times2$ 和 $2\times3$ 系统，PPT 是可分性的充要条件；在更高维系统中，存在 PPT 纠缠态。
 
 因此，PPT 判据与 Entanglement Witness 具有密切联系，但两者的适用方式和检测范围需要加以区分。
 
@@ -327,17 +346,21 @@ PPT 判据要求可分态在局部转置后仍然半正定：
 
 对于给定量子比特数，稳定子纯态的凸包定义了标准的自由态集合：
 
-\operatorname{conv}  
-{|s\rangle\langle s|:  
-|s\rangle\text{ 为稳定子纯态}}.  
-}  
-]
+$$
+\boxed{
+\mathcal S_{\mathrm{stab}}
+=
+\operatorname{conv}
+\{|s\rangle\langle s|:
+|s\rangle\text{ 为稳定子纯态}\}.
+}
+$$
 
 若
 
-[  
-\rho\notin\mathcal S_{\mathrm{stab}},  
-]
+$$
+\rho\notin\mathcal S_{\mathrm{stab}},
+$$
 
 则称该态具有 magic。
 
@@ -347,21 +370,21 @@ PPT 判据要求可分态在局部转置后仍然半正定：
 
 稳定子纯态集合是有限的，因此其凸包构成一个凸多面体，通常称为 Stabilizer Polytope。
 
-以单量子比特为例，六个稳定子纯态分别是 Pauli (X,Y,Z) 的正、负本征态。
+以单量子比特为例，六个稳定子纯态分别是 Pauli $X,Y,Z$ 的正、负本征态。
 
 把单量子比特写为
 
-[  
-\rho=\frac12(I+r_xX+r_yY+r_zZ),  
-]
+$$
+\rho=\frac12(I+r_xX+r_yY+r_zZ),
+$$
 
 则非 magic 态满足
 
-[  
-\boxed{  
-|r_x|+|r_y|+|r_z|\leq1.  
-}  
-]
+$$
+\boxed{
+|r_x|+|r_y|+|r_z|\leq1.
+}
+$$
 
 这个集合在 Bloch 球内对应一个正八面体。
 
@@ -371,43 +394,46 @@ PPT 判据要求可分态在局部转置后仍然半正定：
 
 例如，所有单量子比特非 magic 态都满足
 
-[  
-r_x+r_y+r_z\leq1.  
-]
+$$
+r_x+r_y+r_z\leq1.
+$$
 
 因此，如果实验测得
 
-[  
-\boxed{  
-\langle X\rangle+  
-\langle Y\rangle+  
-\langle Z\rangle>1,  
-}  
-]
+$$
+\boxed{
+\langle X\rangle+
+\langle Y\rangle+
+\langle Z\rangle>1,
+}
+$$
 
 就能够认证该量子态具有 magic。
 
-例如，单量子比特 (T) 态
+例如，单量子比特 $T$ 态
 
-\frac{|0\rangle+e^{i\pi/4}|1\rangle}{\sqrt2}  
-]
+$$
+|T\rangle
+=
+\frac{|0\rangle+e^{i\pi/4}|1\rangle}{\sqrt2}
+$$
 
 满足
 
-[  
-\langle X\rangle  
-=\langle Y\rangle  
-=\frac1{\sqrt2},  
-\qquad  
-\langle Z\rangle=0.  
-]
+$$
+\langle X\rangle
+=\langle Y\rangle
+=\frac1{\sqrt2},
+\qquad
+\langle Z\rangle=0.
+$$
 
 于是
 
-[  
-\langle X\rangle+\langle Y\rangle+\langle Z\rangle  
-=\sqrt2>1.  
-]
+$$
+\langle X\rangle+\langle Y\rangle+\langle Z\rangle
+=\sqrt2>1.
+$$
 
 因此，这个 Witness 可以认证该态具有 magic。
 
@@ -425,30 +451,37 @@ r_x+r_y+r_z\leq1.
 
 #### （1）数学定义
 
-考虑双体 Bell 场景。Alice 的测量输入为 (x)、输出为 (a)，Bob 的测量输入为 (y)、输出为 (b)。
+考虑双体 Bell 场景。Alice 的测量输入为 $x$、输出为 $a$，Bob 的测量输入为 $y$、输出为 $b$。
 
 实验得到的关联为
 
-[  
-p(ab|xy).  
-]
+$$
+p(ab|xy).
+$$
 
-如果存在隐藏变量 (\lambda)，使得
+如果存在隐藏变量 $\lambda$，使得
 
-\int d\lambda,p(\lambda)  
-p(a|x,\lambda)p(b|y,\lambda),  
-}  
-]
+$$
+\boxed{
+p(ab|xy)
+=
+\int d\lambda\,p(\lambda)
+p(a|x,\lambda)p(b|y,\lambda),
+}
+$$
 
 则称该关联具有局域隐变量模型（Local Hidden Variable Model, LHV），即 Bell 局域关联。
 
 若不能用上述模型解释，则该关联具有 Bell 非局域性。
 
-对于量子态 (\rho_{AB})，局部测量产生的概率为
+对于量子态 $\rho_{AB}$，局部测量产生的概率为
 
-\operatorname{Tr}  
-[(M_{a|x}\otimes N_{b|y})\rho_{AB}].  
-]
+$$
+p(ab|xy)
+=
+\operatorname{Tr}
+[(M_{a|x}\otimes N_{b|y})\rho_{AB}].
+$$
 
 这里需要区分两个对象：
 
@@ -463,31 +496,31 @@ p(a|x,\lambda)p(b|y,\lambda),
 
 典型例子是 CHSH 不等式：
 
-[  
-\boxed{  
-\left|  
-\langle A_0B_0\rangle+  
-\langle A_0B_1\rangle+  
-\langle A_1B_0\rangle-  
-\langle A_1B_1\rangle  
-\right|  
-\leq2.  
-}  
-]
+$$
+\boxed{
+\left|
+\langle A_0B_0\rangle+
+\langle A_0B_1\rangle+
+\langle A_1B_0\rangle-
+\langle A_1B_1\rangle
+\right|
+\leq2.
+}
+$$
 
 所有局域关联都满足上述不等式。
 
 量子理论允许达到 Tsirelson 界：
 
-[  
-S_{\mathrm{CHSH}}\leq2\sqrt2.  
-]
+$$
+S_{\mathrm{CHSH}}\leq2\sqrt2.
+$$
 
 因此，如果实验测得
 
-[  
-S_{\mathrm{CHSH}}>2,  
-]
+$$
+S_{\mathrm{CHSH}}>2,
+$$
 
 就可以认证观测关联不具有 LHV 模型。
 
@@ -507,33 +540,41 @@ Bell 不等式直接作用于输入输出概率，而不是完整密度矩阵。
 
 #### （1）物理场景与数学定义
 
-考虑 Alice 和 Bob 共享未知双体量子态 (\rho_{AB})。
+考虑 Alice 和 Bob 共享未知双体量子态 $\rho_{AB}$。
 
-Alice 进行输入为 (x) 的测量，得到结果 (a)。Bob 的未归一化条件态为
+Alice 进行输入为 $x$ 的测量，得到结果 $a$。Bob 的未归一化条件态为
 
-\operatorname{Tr}*A*  
-*[(M*{a|x}\otimes I_B)\rho_{AB}].  
-}  
-]
+$$
+\boxed{
+\sigma_{a|x}
+=
+\operatorname{Tr}_A
+[(M_{a|x}\otimes I_B)\rho_{AB}].
+}
+$$
 
-所有 (\sigma_{a|x}) 构成 Assemblage。
+所有 $\sigma_{a|x}$ 构成 Assemblage。
 
 它满足
 
-[  
-\sigma_{a|x}\succeq0,  
-\qquad  
-\sum_a\sigma_{a|x}=\rho_B.  
-]
+$$
+\sigma_{a|x}\succeq0,
+\qquad
+\sum_a\sigma_{a|x}=\rho_B.
+$$
 
 第二个关系意味着 Alice 的测量选择不能改变 Bob 的无条件态。
 
-如果存在概率分布 (p(\lambda))、局域响应函数 (p(a|x,\lambda)) 和 Bob 的预先存在的局域量子态 (\rho_\lambda)，使得
+如果存在概率分布 $p(\lambda)$、局域响应函数 $p(a|x,\lambda)$ 和 Bob 的预先存在的局域量子态 $\rho_\lambda$，使得
 
-\int d\lambda,p(\lambda)  
-p(a|x,\lambda)\rho_\lambda,  
-}  
-]
+$$
+\boxed{
+\sigma_{a|x}
+=
+\int d\lambda\,p(\lambda)
+p(a|x,\lambda)\rho_\lambda,
+}
+$$
 
 则称该 Assemblage 具有局域隐藏态模型（Local Hidden State Model, LHS）。
 
@@ -549,27 +590,27 @@ p(a|x,\lambda)\rho_\lambda,
 
 #### （3）Steering Witness
 
-对于一组 Hermitian 算符 (F_{a|x})，可以构造线性函数
+对于一组 Hermitian 算符 $F_{a|x}$，可以构造线性函数
 
-[  
-S=  
-\sum_{a,x}  
-\operatorname{Tr}(F_{a|x}\sigma_{a|x}).  
-]
+$$
+S=
+\sum_{a,x}
+\operatorname{Tr}(F_{a|x}\sigma_{a|x}).
+$$
 
 若所有 LHS Assemblage 都满足
 
-[  
-\boxed{  
-S\leq\beta_{\mathrm{LHS}},  
-}  
-]
+$$
+\boxed{
+S\leq\beta_{\mathrm{LHS}},
+}
+$$
 
 则观测到
 
-[  
-S>\beta_{\mathrm{LHS}}  
-]
+$$
+S>\beta_{\mathrm{LHS}}
+$$
 
 就能够认证量子导引。
 
@@ -579,14 +620,17 @@ S>\beta_{\mathrm{LHS}}
 
 对于有限的 Alice 输入输出，可以将 LHS 模型改写为
 
-\sum_\lambda D(a|x,\lambda)\tau_\lambda,  
-]
+$$
+\sigma_{a|x}
+=
+\sum_\lambda D(a|x,\lambda)\tau_\lambda,
+$$
 
-其中 (D(a|x,\lambda)) 是确定性响应函数，并要求
+其中 $D(a|x,\lambda)$ 是确定性响应函数，并要求
 
-[  
-\tau_\lambda\succeq0.  
-]
+$$
+\tau_\lambda\succeq0.
+$$
 
 于是，判断 Assemblage 是否存在 LHS 分解，可以转化为半正定规划可行性问题。
 
@@ -602,25 +646,32 @@ S>\beta_{\mathrm{LHS}}
 
 量子隐形传态提供了一个例子。
 
-假设 Alice 和 Bob 共享未知双体态 (\rho_{AB})，并希望利用它传输未知量子态。
+假设 Alice 和 Bob 共享未知双体态 $\rho_{AB}$，并希望利用它传输未知量子态。
 
 我们可以根据该资源所允许达到的平均传态保真度，判断它能否提供超过经典策略的性能。
 
 #### （2）Fully Entangled Fraction
 
-对于 (d\times d) 系统，定义最大纠缠态
+对于 $d\times d$ 系统，定义最大纠缠态
 
-\frac1{\sqrt d}\sum_{j=0}^{d-1}|jj\rangle.  
-]
+$$
+|\Phi_d\rangle
+=
+\frac1{\sqrt d}\sum_{j=0}^{d-1}|jj\rangle.
+$$
 
 Fully Entangled Fraction 定义为
 
-\max_U  
-\langle\Phi_d|  
-(I\otimes U)\rho(I\otimes U^\dagger)  
-|\Phi_d\rangle.  
-}  
-]
+$$
+\boxed{
+f(\rho)
+=
+\max_U
+\langle\Phi_d|
+(I\otimes U)\rho(I\otimes U^\dagger)
+|\Phi_d\rangle.
+}
+$$
 
 它衡量量子态与最大纠缠态在局部酉优化后的最大重叠。
 
@@ -628,21 +679,27 @@ Fully Entangled Fraction 定义为
 
 对于以 Bell 测量和相应局部酉校正为基础的标准传态协议，相应优化平均保真度为
 
-\frac{df(\rho)+1}{d+1}.  
-]
+$$
+F_{\mathrm{tel}}(\rho)
+=
+\frac{df(\rho)+1}{d+1}.
+$$
 
 对于均匀分布的未知纯态，不预先共享纠缠时的最优经典平均保真度为
 
-\frac2{d+1}.  
-]
+$$
+F_{\mathrm{cl}}
+=
+\frac2{d+1}.
+$$
 
 因此，在上述指定传态协议下，
 
-[  
-\boxed{  
-f(\rho)>\frac1d  
-}  
-]
+$$
+\boxed{
+f(\rho)>\frac1d
+}
+$$
 
 意味着传态保真度超过经典基准。
 
@@ -654,21 +711,24 @@ f(\rho)>\frac1d
 
 例如，对两个 qubit，
 
-\frac12I_4-  
-| \Phi^+\rangle\langle\Phi^+ |
-]
+$$
+W_{\mathrm{tel}}
+=
+\frac12I_4-
+|\Phi^+\rangle\langle\Phi^+|
+$$
 
 满足：对于所有在标准协议下不具有传态优势的态，
 
-[  
-\operatorname{Tr}(W_{\mathrm{tel}}\rho)\geq0.  
-]
+$$
+\operatorname{Tr}(W_{\mathrm{tel}}\rho)\geq0.
+$$
 
 因此，如果
 
-[  
-\operatorname{Tr}(W_{\mathrm{tel}}\rho)<0,  
-]
+$$
+\operatorname{Tr}(W_{\mathrm{tel}}\rho)<0,
+$$
 
 就能够认证该态可用于实现超过经典基准的标准量子隐形传态。
 
@@ -684,15 +744,13 @@ f(\rho)>\frac1d
 
 ### 4.1 不同性质对应什么资源限制？
 
-
 | 性质 | 受限资源的定义 | 典型判据 |
-| --------- | ------------ | --------------------- |
+|---|---|---|
 | 纠缠 | 可分态分解 | Entanglement Witness |
 | Magic | 稳定子纯态的凸组合 | Magic Witness |
 | Bell 非局域性 | LHV 模型 | Bell Inequality |
 | 量子导引 | LHS 模型 | Steering Witness |
 | 传态有用性 | 指定传态协议的经典性能界 | Teleportation Witness |
-
 
 这些方法具有相同的基本逻辑：先定义受限资源集合，再寻找所有受限资源必须满足的观测约束。
 
@@ -702,21 +760,21 @@ f(\rho)>\frac1d
 
 纠缠 Witness 和 Magic Witness 通常使用可信可观测量的期望值：
 
-[  
-\langle O_i\rangle_\rho.  
-]
+$$
+\langle O_i\rangle_\rho.
+$$
 
 Bell 不等式使用实验输入输出概率：
 
-[  
-p(ab|xy).  
-]
+$$
+p(ab|xy).
+$$
 
 Steering Witness 使用 Bob 的条件态统计所确定的 Assemblage：
 
-[  
-{\sigma_{a|x}}_{a,x}.  
-]
+$$
+\{\sigma_{a|x}\}_{a,x}.
+$$
 
 Teleportation Witness 则可以通过与传态能力相关的态重叠或其他可观测量，对任务性能提供保证。
 
@@ -736,17 +794,23 @@ Bell 不等式也是如此。违反 CHSH 是认证 Bell 非局域性的充分条
 
 对于构造出的不等式，我们首先希望证明其受限资源界
 
-\sup_{\rho\in\mathcal C}W(\rho)  
-]
+$$
+\beta_{\mathcal C}
+=
+\sup_{\rho\in\mathcal C}W(\rho)
+$$
 
 是严格的，并尽可能找到达到该界的资源。
 
 在此基础上，还可以进一步考虑：给定一个观测违反值，我们至少能够保证资源具有多强的非经典性质？
 
-如果用 (R(\rho)) 表示某种资源测度，则可以研究
+如果用 $R(\rho)$ 表示某种资源测度，则可以研究
 
-\inf_{\rho\text{ 与 }\mathbf d\text{ 相容}}R(\rho).  
-]
+$$
+\underline R(\mathbf d)
+=
+\inf_{\rho\text{ 与 }\mathbf d\text{ 相容}}R(\rho).
+$$
 
 这使 Witness 从简单的成员资格判断，推广到资源的定量认证。
 
