@@ -1,5 +1,5 @@
 ---
-title: The construction of nonlocal inequality
+title: Constructing Inequalities for Network Nonlocality
 category: research
 date: 2026-10-22
 status: exploring
