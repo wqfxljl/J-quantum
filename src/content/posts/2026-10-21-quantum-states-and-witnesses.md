@@ -4,6 +4,7 @@ category: research
 date: 2026-10-21
 status: exploring
 ---
+
 # 量子态的资源性质、集合结构与 Witness 刻画
 
 ## 一、研究思路：如何刻画未知量子资源？
@@ -24,10 +25,10 @@ status: exploring
 
 考虑有限维 Hilbert 空间 $\mathcal H$，所有合法量子态构成集合
 
-# $$
+$$
 \mathcal D(\mathcal H)
-
-\rho:\rho\succeq0,\ \operatorname{Tr}\rho=1.
+=
+\{\rho:\rho\succeq0,\ \operatorname{Tr}\rho=1\}.
 $$
 
 我们可以根据关心的性质，对量子态施加不同的限制，从而定义相应的态集合
@@ -179,9 +180,9 @@ $$
 
 如果受限集合 $\mathcal C$ 是非凸的，那么对于任意线性函数 $L$，都有
 
-# $$
+$$
 \sup_{\rho\in\mathcal C}L(\rho)
-
+=
 \sup_{\rho\in\operatorname{conv}(\mathcal C)}L(\rho).
 $$
 
@@ -206,13 +207,13 @@ $$
 
 一种系统的认证方式是先考虑与数据相容的受限资源：
 
-# $$
+$$
 \mathcal C(\mathbf d)
-
-\left
+=
+\left\{
 \sigma\in\mathcal C:
-\operatorname{Tr}(\sigma O_i)=d_i
-\right.
+\operatorname{Tr}(\sigma O_i)=d_i,\ \forall i
+\right\}.
 $$
 
 如果
@@ -225,9 +226,9 @@ $$
 
 对于线性 Witness，可以通过优化计算受限界
 
-# $$
+$$
 \beta_{\mathcal C}
-
+=
 \max_{\sigma\in\mathcal C}
 \operatorname{Tr}(W\sigma).
 $$
@@ -238,7 +239,11 @@ $$
 
 ### 2.5 Witness 的刻画能力
 
-一条不等式不意味着它能够检测所有具有目标性质的量子态。有效和充要不是一回事。我们希望witness尽可能的靠近真正的集合边缘，这样就能检测出来更大范围。但这里的“optimal”往往有两种说法，一种是针对所有态的，一种是针对某一类态的。
+一条不等式不意味着它能够检测所有具有目标性质的量子态。有效和充要不是一回事。
+
+我们希望 Witness 尽可能靠近真正的集合边缘，这样就能检测出来更大范围。
+
+但这里的“optimal”往往有两种说法，一种是针对所有态的，一种是针对某一类态的。
 
 ---
 
@@ -254,12 +259,12 @@ $$
 
 如果存在概率分布 $p_\lambda$ 和局部量子态 $\rho_A^\lambda,\rho_B^\lambda$，使得
 
-# $$
+$$
 \boxed{
 \rho_{AB}
-
+=
 \sum_\lambda p_\lambda
-\rho_A^\lambda\otimes\rho_B^\lambda,
+\rho_A^\lambda\otimes\rho_B^\lambda
 }
 $$
 
@@ -271,11 +276,11 @@ $$
 
 可分态集合为
 
-# $$
+$$
 \mathcal S_{\mathrm{sep}}
-
+=
 \operatorname{conv}
-\rho_A\otimes\rho_B.
+\{\rho_A\otimes\rho_B\}.
 $$
 
 由于可分态的任意凸组合仍然可分，因此 $\mathcal S_{\mathrm{sep}}$ 是凸集。
@@ -334,13 +339,13 @@ $$
 
 对于给定量子比特数，稳定子纯态的凸包定义了标准的自由态集合：
 
-# $$
+$$
 \boxed{
 \mathcal S_{\mathrm{stab}}
-
+=
 \operatorname{conv}
-|s\rangle\langle s|:
-|s\rangle\text{ 为稳定子纯态}.
+\{|s\rangle\langle s|:
+|s\rangle\text{ 为稳定子纯态}\}
 }
 $$
 
@@ -370,7 +375,7 @@ $$
 
 $$
 \boxed{
-|r_x|+|r_y|+|r_z|\leq1.
+|r_x|+|r_y|+|r_z|\leq1
 }
 $$
 
@@ -392,7 +397,7 @@ $$
 \boxed{
 \langle X\rangle+
 \langle Y\rangle+
-\langle Z\rangle>1,
+\langle Z\rangle>1
 }
 $$
 
@@ -400,9 +405,9 @@ $$
 
 例如，单量子比特 $T$ 态
 
-# $$
+$$
 |T\rangle
-
+=
 \frac{|0\rangle+e^{i\pi/4}|1\rangle}{\sqrt2}
 $$
 
@@ -433,7 +438,9 @@ $$
 
 这些测度具有不同的定义和适用对象，因此需要分别考察其资源单调性与操作意义。
 
-**本节重点：** Magic 为资源集合的多面体刻画提供了一个清晰例子。对于低维系统，可以利用有限数量的线性不等式直接刻画整个非 magic 态集合。(这个性质其实我还不太熟悉。因为看过用CHSH不等式来间接检测一个态的magic，所以觉得其作用应该类似于纠缠。magic似乎在metrology或者资源理论里用的非常多，可能magic是某些非经典性的来源。)
+**本节重点：** Magic 为资源集合的多面体刻画提供了一个清晰例子。对于低维系统，可以利用有限数量的线性不等式直接刻画整个非 magic 态集合。
+
+（这个性质其实我还不太熟悉。因为看过用 CHSH 不等式来间接检测一个态的 magic，所以觉得其作用应该类似于纠缠。magic 似乎在 metrology 或者资源理论里用的非常多，可能 magic 是某些非经典性的来源。）
 
 ### 3.3 Bell 局域性与非局域性（Bell Nonlocality）
 
@@ -449,12 +456,12 @@ $$
 
 如果存在隐藏变量 $\lambda$，使得
 
-# $$
+$$
 \boxed{
 p(ab|xy)
-
-\int d\lambdap(\lambda)
-p(a|x,\lambda)p(b|y,\lambda),
+=
+\int d\lambda\,p(\lambda)
+p(a|x,\lambda)p(b|y,\lambda)
 }
 $$
 
@@ -464,9 +471,9 @@ $$
 
 对于量子态 $\rho_{AB}$，局部测量产生的概率为
 
-# $$
+$$
 p(ab|xy)
-
+=
 \operatorname{Tr}
 [(M_{a|x}\otimes N_{b|y})\rho_{AB}].
 $$
@@ -492,7 +499,7 @@ $$
 \langle A_1B_0\rangle-
 \langle A_1B_1\rangle
 \right|
-\leq2.
+\leq2
 }
 $$
 
@@ -532,12 +539,12 @@ Bell 不等式直接作用于输入输出概率，而不是完整密度矩阵。
 
 Alice 进行输入为 $x$ 的测量，得到结果 $a$。Bob 的未归一化条件态为
 
-# $$
+$$
 \boxed{
 \sigma_{a|x}
-
-\operatorname{Tr}*A
-[(M*{a|x}\otimes I_B)\rho_{AB}].
+=
+\operatorname{Tr}_A
+[(M_{a|x}\otimes I_B)\rho_{AB}]
 }
 $$
 
@@ -555,12 +562,12 @@ $$
 
 如果存在概率分布 $p(\lambda)$、局域响应函数 $p(a|x,\lambda)$ 和 Bob 的预先存在的局域量子态 $\rho_\lambda$，使得
 
-# $$
+$$
 \boxed{
 \sigma_{a|x}
-
-\int d\lambdap(\lambda)
-p(a|x,\lambda)\rho_\lambda,
+=
+\int d\lambda\,p(\lambda)
+p(a|x,\lambda)\rho_\lambda
 }
 $$
 
@@ -590,7 +597,7 @@ $$
 
 $$
 \boxed{
-S\leq\beta_{\mathrm{LHS}},
+S\leq\beta_{\mathrm{LHS}}
 }
 $$
 
@@ -608,9 +615,9 @@ $$
 
 对于有限的 Alice 输入输出，可以将 LHS 模型改写为
 
-# $$
+$$
 \sigma_{a|x}
-
+=
 \sum_\lambda D(a|x,\lambda)\tau_\lambda,
 $$
 
@@ -642,22 +649,22 @@ $$
 
 对于 $d\times d$ 系统，定义最大纠缠态
 
-# $$
+$$
 |\Phi_d\rangle
-
+=
 \frac1{\sqrt d}\sum_{j=0}^{d-1}|jj\rangle.
 $$
 
 Fully Entangled Fraction 定义为
 
-# $$
+$$
 \boxed{
 f(\rho)
-
+=
 \max_U
 \langle\Phi_d|
 (I\otimes U)\rho(I\otimes U^\dagger)
-|\Phi_d\rangle.
+|\Phi_d\rangle
 }
 $$
 
@@ -667,17 +674,17 @@ $$
 
 对于以 Bell 测量和相应局部酉校正为基础的标准传态协议，相应优化平均保真度为
 
-# $$
+$$
 F_{\mathrm{tel}}(\rho)
-
+=
 \frac{df(\rho)+1}{d+1}.
 $$
 
 对于均匀分布的未知纯态，不预先共享纠缠时的最优经典平均保真度为
 
-# $$
+$$
 F_{\mathrm{cl}}
-
+=
 \frac2{d+1}.
 $$
 
@@ -699,11 +706,11 @@ $$
 
 例如，对两个 qubit，
 
-# $$
+$$
 W_{\mathrm{tel}}
-
+=
 \frac12I_4-
-| \Phi^+\rangle\langle\Phi^+ |
+|\Phi^+\rangle\langle\Phi^+|
 $$
 
 满足：对于所有在标准协议下不具有传态优势的态，
@@ -722,7 +729,11 @@ $$
 
 值得注意的是，这个具体 Witness 同时也是纠缠 Witness。不过，并非所有纠缠态都必然能在未经额外处理的标准传态协议中超过经典基准。
 
-**本节重点：** 传态有用性展示了如何根据具体信息处理任务的最优性能界，对未知量子态进行资源分类和 Witness 认证。（这里是因为我做了一个teleportation witness构造的工作，其实这算是第一次我自己认可我的研究内容。因为这个idea的产生很自然，做的也很顺。听了师妹汇报一篇用非局域性或者导引或者average correlations来刻画态隐形传态能力的论文，我当时产生了疑问，为什么不直接刻画态的性质，而是要间接来反应呢。后来发现在一定约束下teleportation- useless的态是一个凸集，这个性质就很好，但是问题出在需要遍历所有的酉矩阵，于是就想到了不停的迭代来构造割平面逐步逼近这个凸集，在一些case上数值优化的效果也还挺好。）
+**本节重点：** 传态有用性展示了如何根据具体信息处理任务的最优性能界，对未知量子态进行资源分类和 Witness 认证。
+
+（这里是因为我做了一个 teleportation witness 构造的工作，其实这算是第一次我自己认可我的研究内容。因为这个 idea 的产生很自然，做的也很顺。听了师妹汇报一篇用非局域性或者导引或者 average correlations 来刻画态隐形传态能力的论文，我当时产生了疑问，为什么不直接刻画态的性质，而是要间接来反映呢。
+
+后来发现在一定约束下 teleportation-useless 的态是一个凸集，这个性质就很好，但是问题出在需要遍历所有的酉矩阵，于是就想到了不停地迭代来构造割平面逐步逼近这个凸集，在一些 case 上数值优化的效果也还挺好。）
 
 ---
 
@@ -732,15 +743,13 @@ $$
 
 ### 4.1 不同性质对应什么资源限制？
 
-
 | 性质 | 受限资源的定义 | 典型判据 |
-| --------- | ------------ | --------------------- |
+|---|---|---|
 | 纠缠 | 可分态分解 | Entanglement Witness |
 | Magic | 稳定子纯态的凸组合 | Magic Witness |
 | Bell 非局域性 | LHV 模型 | Bell Inequality |
 | 量子导引 | LHS 模型 | Steering Witness |
 | 传态有用性 | 指定传态协议的经典性能界 | Teleportation Witness |
-
 
 这些方法具有相同的基本逻辑：先定义受限资源集合，再寻找所有受限资源必须满足的观测约束。
 
@@ -752,7 +761,7 @@ $$
 
 在此基础上，我希望从以下两个方面进一步探索。
 
-一、资源的刻画与 Witness 构造
+### 一、资源的刻画与 Witness 构造
 
 **1. 基于具体物理场景与资源集合结构构造 Witness**
 
@@ -786,7 +795,7 @@ $$
 
 这里的重点不只是展示 quantum advantage，而是建立任务性能与底层资源性质之间的严格联系，从而将信息处理任务转化为具有明确操作意义的资源认证工具。
 
- 二、不同资源层级之间的关系与转化
+### 二、不同资源层级之间的关系与转化
 
 除了研究单个资源集合的刻画，我们也希望进一步理解不同资源性质或资源层级之间的关系。
 
@@ -813,11 +822,13 @@ $$
 
 **实现资源层级转化所需的最小额外资源成本是多少？**
 
-这类成本可以根据具体任务用 quantum communication、classical communication、shared entanglement 或其他资源消耗来衡量，但需要明确允许的操作及资源转换的定义。例如，仅靠 LOCC 和 classical communication，不能将 separable state 转变为 entangled state，因此也无法产生真正的 Steering 资源。
+这类成本可以根据具体任务用 quantum communication、classical communication、shared entanglement 或其他资源消耗来衡量，但需要明确允许的操作及资源转换的定义。
+
+例如，仅靠 LOCC 和 classical communication，不能将 separable state 转变为 entangled state，因此也无法产生真正的 Steering 资源。
 
 这类问题将研究重点从静态的资源认证，进一步扩展到资源的操作能力、可转换性及其代价。
 
-三、整体研究思路
+### 三、整体研究思路
 
 上述两个方向分别关注量子资源的不同方面：
 
