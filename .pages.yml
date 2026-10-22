@@ -52,8 +52,10 @@ content:
             - name: rejected
               label: 已否定
 
+      
       - name: body
         label: 正文
-        type: rich-text
+        type: code
         options:
           format: markdown
+
